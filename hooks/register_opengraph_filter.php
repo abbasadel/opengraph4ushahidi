@@ -25,15 +25,19 @@ class OpenGraph {
         $title = $html->find('title ', 0)->innertext;
         $desc = @$html->find('.report-description-text', 0)->plaintext;
         $photos = @$html->find('.photothumb');
+        $logo = @$html->find('#page img',1)->src;
 
 
 
         $meta['og:title'] = $title;
         $meta['og:description'] = $desc;
+        
 
         foreach ($photos as $photo) {
             $meta['og:image'][] = $photo->href;
         }
+        
+        $meta['og:image'][]=$logo;
 
 
         $meta_str = '';
