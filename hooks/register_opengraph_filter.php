@@ -13,6 +13,9 @@ class OpenGraph {
     }
 
     public function add() {
+        if(Router::$method == 'switch_form'){
+            return;
+        }
 
         $data = Event::$data;
         $htmlutil = new Htmlutil();
