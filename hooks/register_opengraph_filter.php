@@ -13,11 +13,17 @@ class OpenGraph {
     }
 
     public function add() {
+        //check ajax
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            return;
+        }
+        
         if(Router::$method == 'switch_form'){
             return;
         }
 
         $data = Event::$data;
+        
         $htmlutil = new Htmlutil();
         $html = $htmlutil->parse($data, true, false);
 
