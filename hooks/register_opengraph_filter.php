@@ -18,7 +18,13 @@ class OpenGraph {
             return;
         }
         
+        $allowedControllers = ['alert', 'reports', 'contact', 'page', 'main', 'search'];
+        
         if(Router::$method == 'switch_form'){
+            return;
+        }
+        
+        if(!in_array(Router::$method, $allowedControllers)){
             return;
         }
 
